@@ -4,10 +4,20 @@
             Funcionalidade: Configuração do produto
 
             Cenário: Configurar produto
-            Dado que eu queira um produto de acordo com tamanho e Cor
-            Quando eu selecionar o produto, devo poder escolher a cor e o tamanho
+            Dado queira um produto
+            Quando eu selecionar o produto, posso escolher a cor e o tamanho
             E escolher a quantidade
             Então devo inserir o produto no carrinho
+
+            Cenário: Limite de produtos
+            Dado que eu tenha 10 produtos no carrinho
+            E queira adicionar mais produtos
+            Então deve exibir uma mensagem de alerta: "Limite de produtos atingido"
+
+            Cenário: Esvaziar carrinho 
+            Dado que eu tenha produtos no carrinho
+            E queira esvaziar o carrinho
+            Então deve exibir uma mensagem de confirmação: "Tem certeza que deseja esvaziar o carrinho?"
 
             #---------------------------------------------------------------------------------------------------------------------------------
 
@@ -20,7 +30,7 @@
             Cenário: Autenticação válida
             Quando eu digitar o usuário <usuario>
             E senha <senha>
-            Então deve exibir uma <mensagem> de boas vindas
+            Então deve exibir uma <mensagem> de "boas vindas"
 
             #cenário 2
             Cenário: Usuário inexistente
@@ -51,7 +61,7 @@
 
             #---------------------------------------------------------------------------------------------------------------------------------
             
-            #Cenário usando tabela de dados
+            #Cenário usando contexto
             Funcionalidade: Tela de cadastro - check-out
 
             Contexto:
@@ -59,20 +69,20 @@
 
             #cenário 1
             Cenário: Dados obrigatórios
-            Quando eu preecho todos os campos obrigatórios marcados com asteriscos
-            E clico no botão "Cadastrar"
+            Quando eu preencher todos os campos obrigatórios marcados com asteriscos
+            E tentar cadastrar
             Então devo ver uma mensagem de sucesso "Cadastro realizado com sucesso"
 
             #cenário 2
             Cenário: Cadastrar e-mail no formato inválido
             Quando eu preencher o campo de e-mail com um formato inválido
-            E clicar no botão "Cadastrar"
+            E tentar cadastrar
             Então devo ver uma mensagem de alerta "E-mail inválido"
 
             #cenário 3
             Cenário: Tentativa de cadastro com campos vazios
-            Quando eu preencher os campos obrigatórios com valores vazios
-            E clicar no botão "Cadastrar"
+            Quando eu tentar cadastrar sem preencher nenhum campo obrigatório
+            E tentar cadastrar
             Então devo ver uma mensagem de alerta "Preencha todos os campos obrigatórios"
 
 
